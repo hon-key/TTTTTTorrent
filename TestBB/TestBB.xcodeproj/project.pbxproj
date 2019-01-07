@@ -756,13 +756,6 @@
 			path = DetailList;
 			sourceTree = "<group>";
 		};
-		92295B30213FCBCE00BDE448 /* ImageBrowzer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImageBrowzer;
-			sourceTree = "<group>";
-		};
 		92295B31213FD02F00BDE448 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,7 +794,6 @@
 		9229EB342138E88000BDE448 /* TestBB */ = {
 			isa = PBXGroup;
 			children = (
-				92295B30213FCBCE00BDE448 /* ImageBrowzer */,
 				92295B28213F692B00BDE448 /* RootList */,
 				92295B29213F693E00BDE448 /* DetailList */,
 				9229EB3B2138E88000BDE448 /* Main.storyboard */,

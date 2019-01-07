@@ -1,11 +1,3 @@
-//
-//  Dump.m
-//  TestBB
-//
-//  Created by Ruite Chen on 2018/8/31.
-//  Copyright © 2018年 乐刷. All rights reserved.
-//
-
 #import "TorrentInfo.h"
 #include "libtorrent/entry.hpp"
 #include "libtorrent/bencode.hpp"

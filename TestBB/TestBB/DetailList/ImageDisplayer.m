@@ -1,11 +1,3 @@
-//
-//  YKImagePicker.m
-//  ShouYinTong
-//
-//  Created by Ruite Chen on 2018/8/14.
-//  Copyright © 2018年 乐刷. All rights reserved.
-//
-
 #import "ImageDisplayer.h"
 #import "NSObject+SEL.h"
 #import <Photos/Photos.h>

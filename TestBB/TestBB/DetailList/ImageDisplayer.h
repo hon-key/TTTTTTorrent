@@ -1,11 +1,3 @@
-//
-//  YKImagePicker.h
-//  ShouYinTong
-//
-//  Created by Ruite Chen on 2018/8/14.
-//  Copyright © 2018年 乐刷. All rights reserved.
-//  图片选择器
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 

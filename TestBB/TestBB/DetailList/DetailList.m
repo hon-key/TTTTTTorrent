@@ -1,10 +1,3 @@
-//
-//  DetailList.m
-//  TestBB
-//
-//  Created by Ruite Chen on 2018/9/5.
-//  Copyright © 2018年 乐刷. All rights reserved.
-//
 
 #import "DetailList.h"
 #import "DetailListCell.h"
