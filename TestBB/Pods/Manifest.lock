@@ -1,0 +1,30 @@
+PODS:
+  - Masonry (1.1.0)
+  - MJRefresh (3.1.15.6)
+  - NudeIn (1.2.3)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+
+DEPENDENCIES:
+  - Masonry
+  - MJRefresh
+  - NudeIn
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+    - MJRefresh
+    - NudeIn
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 0efa19656679d70a0f47cbe76e56c2271fe53a97
+  NudeIn: b505d9ff70a1d9b291591d67d7a23ee3ec023a95
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+
+PODFILE CHECKSUM: b77a55ad4c3944a609ae3d45c3d7264e36934d88
+
+COCOAPODS: 1.5.3
