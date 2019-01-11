@@ -106,4 +106,4 @@ now you have libtorrent static lib with architecture `i386` `x86_64` `armv7` `ar
 
 if you just need one of them or need the other architecture,delete or add `-arch xxx` option to `user-config.jam`
 
-## 7. Enjoy your coding
+## 7. Enjoy coding
