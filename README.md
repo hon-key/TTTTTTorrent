@@ -104,6 +104,6 @@ the static libs are in `<your unziped libtorrent folder path>/bin`
 
 now you have libtorrent static lib with architecture `i386` `x86_64` `armv7` `arm64`
 
-if your just need one of them or need the other architecture,delete or add `-arch xxx` option to `user-config.jam`
+if you just need one of them or need the other architecture,delete or add `-arch xxx` option to `user-config.jam`
 
 ## 7. Enjoy your coding
