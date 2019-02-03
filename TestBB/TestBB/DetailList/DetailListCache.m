@@ -1,28 +1,27 @@
 #import "DetailListCache.h"
 
+static dispatch_semaphore_t sem;
+#define LOCK(sem) dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER)
+#define UNLOCK(sem) dispatch_semaphore_signal(sem)
+
 @interface DetailListCache ()
 @property (nonatomic,copy) NSString *url;
 @property (nonatomic,strong) NSMutableDictionary *caches;
-
 @end
 
-static NSLock *lock;
-
 @implementation DetailListCache
-
-+ (void)safetyConfigLock {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        lock = [[NSLock alloc] init];
-    });
++ (void)load {
+    sem = dispatch_semaphore_create(1);
 }
-
 + (instancetype)cache:(NSString *)url {
     static NSMutableDictionary<NSString *,DetailListCache *> *singletons;
-    [lock lock];
+    LOCK(sem);
     DetailListCache *singleton = singletons[url];
-    if (!singleton) singleton = [[DetailListCache alloc] initWithUrl:url];
-    [lock unlock];
+    if (!singleton) {
+        singleton = [[DetailListCache alloc] initWithUrl:url];
+        singletons[url] = singleton;
+    }
+    UNLOCK(sem);
     return singleton;
 }
 
@@ -44,41 +43,41 @@ static NSLock *lock;
     NSURL *to = [NSURL fileURLWithPath:toStr];
     NSError *error = nil;
     [[NSFileManager defaultManager] moveItemAtURL:from toURL:to error:&error];
-    [lock lock];
+    LOCK(sem);
     [self.caches setObject:path.lastPathComponent forKey:@"k_torrent"];
-    [lock unlock];
+    UNLOCK(sem);
     [self synchronize];
     return toStr;
 }
 
 - (NSString *)storedTorrent {
-    [lock lock];
+    LOCK(sem);
     NSString *filename = [self.caches objectForKey:@"k_torrent"];
-    [lock unlock];
+    UNLOCK(sem);
     if (!filename) return nil;
     NSString *filePath = [NSString stringWithFormat:@"%@%@",NSTemporaryDirectory(),filename];
     return [[NSFileManager defaultManager] fileExistsAtPath:filePath] ? filePath : nil;
 }
 
 - (void)storeImage:(NSString *)path forName:(NSString *)name {
-    [lock lock];
+    LOCK(sem);
     [self.caches setObject:path forKey:name];
-    [lock unlock];
+    UNLOCK(sem);
     [self synchronize];
 }
 
 - (NSString *)storedImageForName:(NSString *)name {
-    [lock lock];
+    LOCK(sem);
     NSString *imgPath =[self.caches objectForKey:name];
-    [lock unlock];
+    UNLOCK(sem);
     return [[NSFileManager defaultManager] fileExistsAtPath:imgPath] ? imgPath : nil;
 }
 
 - (void)synchronize {
-    [lock lock];
+    LOCK(sem);
     [[NSUserDefaults standardUserDefaults] setObject:self.caches forKey:self.url];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [lock unlock];
+    UNLOCK(sem);
 }
 
 
